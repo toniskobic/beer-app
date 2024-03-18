@@ -19,6 +19,13 @@ $colors: (
     "primary": $primaryColor
 );
 
+//focus
+$focusOutlineColor: $primaryColor !default;
+$focusOutline: 0 none !default;
+$focusOutlineOffset: 0 !default;
+$inputFocusOutlineOffset:$focusOutlineOffset !default;
+$focusShadow: 0 0 0 1px $focusOutlineColor !default;
+
 // Mandatory Designer Variables
 @import './variables/general';
 @import './variables/form';
