@@ -29,6 +29,9 @@ dependencies:
   '@angular/router':
     specifier: ^17.3.0
     version: 17.3.0(@angular/common@17.3.0)(@angular/core@17.3.0)(@angular/platform-browser@17.3.0)(rxjs@7.8.1)
+  primeng:
+    specifier: ^17.11.0
+    version: 17.11.0(@angular/common@17.3.0)(@angular/core@17.3.0)(@angular/forms@17.3.0)(rxjs@7.8.1)(zone.js@0.14.4)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -5456,6 +5459,23 @@ packages:
       picocolors: 1.0.0
       source-map-js: 1.1.0
     dev: true
+
+  /primeng@17.11.0(@angular/common@17.3.0)(@angular/core@17.3.0)(@angular/forms@17.3.0)(rxjs@7.8.1)(zone.js@0.14.4):
+    resolution: {integrity: sha512-EtkXnE7I6gcrqjNDvUi4qvwTvwL/m3hwPJImoO/s088HDOBerwjN1c2Pq3bwGRG8Eg4Ga9nXdE/IrYj2mbAZLw==}
+    peerDependencies:
+      '@angular/common': ^17.0.0
+      '@angular/core': ^17.0.0
+      '@angular/forms': ^17.0.0
+      rxjs: ^6.0.0 || ^7.8.1
+      zone.js: ~0.14.0
+    dependencies:
+      '@angular/common': 17.3.0(@angular/core@17.3.0)(rxjs@7.8.1)
+      '@angular/core': 17.3.0(rxjs@7.8.1)(zone.js@0.14.4)
+      '@angular/forms': 17.3.0(@angular/common@17.3.0)(@angular/core@17.3.0)(@angular/platform-browser@17.3.0)(rxjs@7.8.1)
+      rxjs: 7.8.1
+      tslib: 2.6.2
+      zone.js: 0.14.4
+    dev: false
 
   /proc-log@3.0.0:
     resolution: {integrity: sha512-++Vn7NS4Xf9NacaU9Xq3URUuqZETPsf8L4j5/ckhaRYsfPeRyzGw+iDjFhV/Jr3uNmTvvddEJFWh5R1gRgUH8A==}
