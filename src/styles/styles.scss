@@ -1,2 +1,6 @@
-@import './beer-app-light/theme.scss';
-@import "primeng/resources/primeng.css";
+@charset "UTF-8";
+
+//Theme Styles
+@import 'themes/__themes-dir';
+//Base Styles
+@import 'base/__base-dir';
