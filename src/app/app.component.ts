@@ -9,14 +9,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { BeerListComponent } from './components/beer-list/beer-list.component';
 import { Beer } from './models/beer.model';
 import { SessionStorageKeys } from './constants/constants';
+import { FooterComponent } from "./components/footer/footer.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HeaderComponent, BeerListComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [RouterOutlet, HeaderComponent, BeerListComponent, FooterComponent]
 })
 export class AppComponent implements OnInit {
   beers = signal<Beer[]>([]);

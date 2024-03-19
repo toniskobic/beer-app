@@ -1,5 +1,16 @@
 @import "../styles/abstracts/variables";
 
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+}
+
 .container {
   display: flex;
   flex-direction: column;
