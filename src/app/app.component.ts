@@ -8,6 +8,7 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { BeerListComponent } from './components/beer-list/beer-list.component';
 import { Beer } from './models/beer.model';
+import { SessionStorageKeys } from './constants/constants';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,10 @@ export class AppComponent implements OnInit {
   beers = signal<Beer[]>([]);
 
   ngOnInit(): void {
-    const favourites = JSON.parse(sessionStorage.getItem('favourites') || '[]');
+    const favourites = JSON.parse(
+      sessionStorage.getItem(SessionStorageKeys.Favourites) || '[]'
+    );
+
     const beers: Beer[] = [
       {
         id: 1,
