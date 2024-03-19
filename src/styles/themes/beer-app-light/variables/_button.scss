@@ -22,6 +22,10 @@ $buttonTextColor: $primaryTextColor;
 /// @group button
 $buttonBorder: 1px solid $primaryColor;
 
+// Font weight of a button
+/// @group button
+$buttonFontWeight: 600;
+
 /// Background of a button in hover state
 /// @group button
 $buttonHoverBg: $primaryDarkColor;
@@ -80,15 +84,15 @@ $plainButtonActiveBgColor:#dee2e6;
 
 /// Background of a secondary button
 /// @group button
-$secondaryButtonBg: #607D8B;
+$secondaryButtonBg: #ffffff;
 
 /// Text color of a secondary button
 /// @group button
-$secondaryButtonTextColor: #ffffff;
+$secondaryButtonTextColor: #000000;
 
 /// Border of a secondary button
 /// @group button
-$secondaryButtonBorder: 1px solid #607D8B;
+$secondaryButtonBorder: 1px solid #000000;
 
 /// Background of a secondary button in hover state
 /// @group button
@@ -108,7 +112,7 @@ $secondaryButtonActiveBg: #455A64;
 
 /// Text color of a secondary button in pressed state
 /// @group button
-$secondaryButtonTextActiveColor: #ffffff;
+$secondaryButtonTextActiveColor: #000000;
 
 /// Border color of a secondary button in pressed state
 /// @group button
