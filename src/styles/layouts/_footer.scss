@@ -1,0 +1,15 @@
+
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $primaryColor;
+  background-repeat: no-repeat;
+  height: 75px;
+  padding-inline: 2rem;
+
+  .logo {
+    width: 125px;
+  }
+}
