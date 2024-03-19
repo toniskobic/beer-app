@@ -1,6 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  output,
+} from '@angular/core';
 import { ButtonModule } from 'primeng/button';
+import { Beer } from '../../models/beer.model';
 
 @Component({
   selector: 'app-beer-card',
@@ -10,4 +16,20 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './beer-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BeerCardComponent {}
+export class BeerCardComponent {
+  beer = input.required<Beer>();
+
+  favouriteChange = output<boolean>();
+
+  toggleFavourite() {
+    const { id, favourite } = this.beer();
+    let favourites = JSON.parse(sessionStorage.getItem('favourites') || '[]');
+
+    favourites = favourite
+      ? favourites.filter((f: number) => f !== id)
+      : [...favourites, id];
+
+    sessionStorage.setItem('favourites', JSON.stringify(favourites));
+    this.favouriteChange.emit(!favourite);
+  }
+}

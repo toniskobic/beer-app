@@ -4,13 +4,25 @@
     pButton
     pRipple
     class="favourites-button p-button-rounded p-button-text"
+    (click)="toggleFavourite()"
   >
+    @if(beer().favourite) {
     <img
-      alt="star_outline-24px icon"
-      src="../../../assets/svgs/star_outline-24px.svg"
+      alt="star-selected-24px icon"
+      src="../../../assets/svgs/star-selected-24px.svg"
     />
+    } @else {
+    <img
+      alt="star-outline-24px icon"
+      src="../../../assets/svgs/star-outline-24px.svg"
+    />
+    }
   </button>
-  <img class="beer-image" src="../../../assets/images/logo-short.png" alt="beer logo" />
+  <img
+    class="beer-image"
+    src="../../../assets/images/logo-short.png"
+    alt="beer logo"
+  />
   <p-button severity="secondary" [outlined]="true">
     <div class="button-content">
       <img alt="button icon" src="../../../assets/svgs/info-24px.svg" />
