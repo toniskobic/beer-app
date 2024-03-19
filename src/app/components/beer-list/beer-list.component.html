@@ -1,3 +1,8 @@
-<div>
-
+<div class="beer-list">
+  @for (beer of beers(); track $index) {
+  <app-beer-card
+    [beer]="beer"
+    (favouriteChange)="onFavouriteChange(beer.id, $event)"
+  ></app-beer-card>
+  }
 </div>
