@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url("../../assets/svgs/drawing.svg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 200px;
+  padding-inline: 2rem;
+
+  .logo {
+    width: 300px;
+    max-width: 70%;
+  }
+}
