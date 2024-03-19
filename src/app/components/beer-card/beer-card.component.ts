@@ -7,11 +7,12 @@ import {
 } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Beer } from '../../models/beer.model';
+import { RippleModule } from 'primeng/ripple';
 
 @Component({
   selector: 'app-beer-card',
   standalone: true,
-  imports: [ButtonModule, CommonModule],
+  imports: [ButtonModule, CommonModule, RippleModule],
   templateUrl: './beer-card.component.html',
   styleUrl: './beer-card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
