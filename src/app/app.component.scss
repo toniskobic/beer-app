@@ -9,13 +9,6 @@
 main {
   flex: 1;
   overflow: auto;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  max-width: $breakpoint-lg;
-  margin-inline: auto;
   padding: 1.25rem;
 }
