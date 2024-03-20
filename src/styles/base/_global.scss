@@ -1,11 +1,17 @@
 :root {
   // Colors
-  --card-bg: #e2e7ed;
+  --white: #{$white};
+  --alice-blue: #{$alice-blue};
+  --gray-light: #{$gray-light};
 
-  //Breakpoints
+  // Breakpoints
+  --breakpoint-2xs: #{$breakpoint-2xs};
   --breakpoint-xs: #{$breakpoint-xs};
   --breakpoint-sm: #{$breakpoint-sm};
   --breakpoint-md: #{$breakpoint-md};
   --breakpoint-lg: #{$breakpoint-lg};
   --breakpoint-xl: #{$breakpoint-xl};
+
+  // Box shadows
+  --box-shadow-sm: #{$box-shadow-sm};
 }

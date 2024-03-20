@@ -1,5 +1,17 @@
 <app-header></app-header>
-<main>
+<main #main>
   <app-beer-list [(beers)]="beers"></app-beer-list>
+  @if(isScrolled()) {
+  <button
+    icon="pi"
+    pButton
+    pRipple
+    class="scroll-top-button p-button-secondary p-button-outlined"
+    (click)="scrollToTop()"
+    pTooltip="Scroll to top"
+  >
+    <img alt="scroll-top icon" src="../assets/svgs/scroll-top.svg" />
+  </button>
+  }
 </main>
 <app-footer></app-footer>
