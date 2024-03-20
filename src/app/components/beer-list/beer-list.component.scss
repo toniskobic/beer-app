@@ -8,9 +8,15 @@
 
 .beer-list {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
+  flex-flow: column wrap;
+  align-items: center;
   gap: 20px;
   width: 100%;
   max-width: $breakpoint-lg;
+  padding-inline: 2rem;
+
+  @media screen and (min-width: $breakpoint-xs) {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
 }
