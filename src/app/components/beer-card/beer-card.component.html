@@ -22,7 +22,7 @@
   <p-button
     severity="secondary"
     [outlined]="true"
-    (onClick)="dialogVisibleChange(!isDialogVisible())"
+    (onClick)="showDetails()"
   >
     <div class="button-content">
       <img alt="button icon" src="../../../assets/svgs/info-24px.svg" />
@@ -30,7 +30,4 @@
     </div>
   </p-button>
 </div>
-<app-beer-dialog
-  [beer]="beer()"
-  [(visible)]="isDialogVisible"
-></app-beer-dialog>
+

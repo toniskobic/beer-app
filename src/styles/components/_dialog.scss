@@ -1,0 +1,8 @@
+.dialog {
+  width: 90vw;
+  height: 50vh;
+
+  @media screen and (min-width: $breakpoint-xs) {
+    width: 50vw;
+  }
+}
