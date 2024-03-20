@@ -19,6 +19,7 @@
         .p-dialog-header-icon {
             @include action-icon();
             margin-right: $inlineSpacing;
+            padding: 0;
 
             &:last-child {
                 margin-right: 0;
@@ -29,7 +30,6 @@
     .p-dialog-content {
         background: $overlayContentBg;
         color: $panelContentTextColor;
-        padding: $dialogContentPadding;
 
         &:last-of-type {
             border-bottom-right-radius: $borderRadius;

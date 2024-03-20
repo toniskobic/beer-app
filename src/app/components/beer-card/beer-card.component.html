@@ -18,15 +18,19 @@
     />
     }
   </button>
-  <img
-    class="beer-image"
-    [src]="beer().image_url"
-    alt="beer logo"
-  />
-  <p-button severity="secondary" [outlined]="true">
+  <img class="beer-image" [src]="beer().image_url" alt="beer logo" />
+  <p-button
+    severity="secondary"
+    [outlined]="true"
+    (onClick)="dialogVisibleChange(!isDialogVisible())"
+  >
     <div class="button-content">
       <img alt="button icon" src="../../../assets/svgs/info-24px.svg" />
       <span>{{ "details" | uppercase }}</span>
     </div>
   </p-button>
 </div>
+<app-beer-dialog
+  [beer]="beer()"
+  [(visible)]="isDialogVisible"
+></app-beer-dialog>
