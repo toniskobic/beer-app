@@ -1,0 +1,20 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 200px;
+  min-height: 58px;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: $font-weight-semibold;
+  }
+
+  p-slider, .p-dropdown {
+    width: 100%;
+  }
+
+  p-slider, p-checkbox {
+    margin-block: auto;
+  }
+}

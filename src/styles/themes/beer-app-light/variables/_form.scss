@@ -169,7 +169,7 @@ $checkboxHeight: 20px;
 
 /// Border of a checkbox
 /// @group form
-$checkboxBorder: 2px solid #ced4da;
+$checkboxBorder: 2px solid #000;
 
 /// Size of a checkbox icon
 /// @group form
@@ -285,7 +285,7 @@ $ratingStarIconHoverColor: $primaryColor;
 
 /// Background of a slider
 /// @group form
-$sliderBg: #dee2e6;
+$sliderBg: #cfd5db;
 
 /// Border of a slider
 /// @group form
@@ -309,11 +309,11 @@ $sliderHandleHeight: 1.143rem;
 
 /// Background of a slider handle
 /// @group form
-$sliderHandleBg: #ffffff;
+$sliderHandleBg: #000;
 
 /// Border of a slider handle
 /// @group form
-$sliderHandleBorder: 2px solid $primaryColor;
+$sliderHandleBorder: 6px solid $primaryColor;
 
 /// Border radius of a slider handle
 /// @group form
@@ -325,11 +325,11 @@ $sliderHandleHoverBorderColor: $primaryColor;
 
 /// Background of a slider handle in hover state
 /// @group form
-$sliderHandleHoverBg: $primaryColor;
+$sliderHandleHoverBg: $sliderHandleBg;
 
 /// Background color of a range slider
 /// @group form
-$sliderRangeBg: $primaryColor;
+$sliderRangeBg: #000;
 
 /// Margin of a calendar table
 /// @group form
@@ -511,7 +511,7 @@ $fileUploadProgressBarHeight: .25rem;
 /// @group input
 $fileUploadContentPadding: 2rem 1rem;
 
-/// 
+///
 /// @group input
 $fileUploadContentHoverBorder: 1px dashed #e9ecef !default;
 

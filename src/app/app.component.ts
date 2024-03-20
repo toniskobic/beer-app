@@ -17,6 +17,7 @@ import { firstValueFrom, map } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
+import { BeerFiltersComponent } from './components/beer-filters/beer-filters.component';
 
 @Component({
   selector: 'app-root',
@@ -32,10 +33,11 @@ import { RippleModule } from 'primeng/ripple';
     ButtonModule,
     RippleModule,
     TooltipModule,
+    BeerFiltersComponent,
   ],
 })
 export class AppComponent implements OnInit {
-  mainEl = viewChild.required<ElementRef<HTMLElement>>('main');
+  scrollableEl = viewChild.required<ElementRef<HTMLElement>>('scrollable');
 
   beers = signal<Beer[]>([]);
   isScrolled = signal<boolean>(false);
@@ -43,8 +45,8 @@ export class AppComponent implements OnInit {
   constructor(private beerService: BeerService) {}
 
   async ngOnInit() {
-    this.mainEl().nativeElement.addEventListener('scroll', () => {
-      this.isScrolled.set(this.mainEl().nativeElement.scrollTop > 0);
+    this.scrollableEl().nativeElement.addEventListener('scroll', () => {
+      this.isScrolled.set(this.scrollableEl().nativeElement.scrollTop > 0);
     });
 
     const favourites = JSON.parse(
@@ -63,6 +65,6 @@ export class AppComponent implements OnInit {
   }
 
   scrollToTop() {
-    this.mainEl().nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
+    this.scrollableEl().nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

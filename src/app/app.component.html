@@ -1,18 +1,21 @@
 <app-header></app-header>
-<main #main>
-  <app-beer-list [(beers)]="beers"></app-beer-list>
-  @if(isScrolled()) {
-  <button
-    icon="pi"
-    pButton
-    pRipple
-    class="scroll-top-button p-button-secondary p-button-outlined"
-    (click)="scrollToTop()"
-    pTooltip="Scroll to top"
-    tooltipPosition="left"
-  >
-    <img alt="scroll-top icon" src="../assets/svgs/scroll-top.svg" />
-  </button>
-  }
+<main>
+  <app-beer-filters></app-beer-filters>
+  <div #scrollable class="scrollable">
+    <app-beer-list [(beers)]="beers"></app-beer-list>
+    @if(isScrolled()) {
+    <button
+      icon="pi"
+      pButton
+      pRipple
+      class="scroll-top-button p-button-secondary p-button-outlined"
+      (click)="scrollToTop()"
+      pTooltip="Scroll to top"
+      tooltipPosition="left"
+    >
+      <img alt="scroll-top icon" src="../assets/svgs/scroll-top.svg" />
+    </button>
+    }
+  </div>
 </main>
 <app-footer></app-footer>

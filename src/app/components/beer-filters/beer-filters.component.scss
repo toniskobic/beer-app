@@ -1,0 +1,21 @@
+@import "../../../styles/abstracts/variables";
+
+:host {
+  display: flex;
+  justify-content: center;
+  padding-inline: 2rem;
+}
+
+.filters {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  width: 100%;
+  max-width: $breakpoint-lg;
+  gap: 2rem;
+
+  @media screen and (min-width: $breakpoint-xs) {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+}
