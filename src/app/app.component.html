@@ -1,8 +1,16 @@
 <app-header></app-header>
 <main>
-  <app-beer-filters [(favourites)]="favourites"></app-beer-filters>
+  <app-beer-filters
+    [(showFavourites)]="showFavourites"
+    [(name)]="name"
+    [(alcoholContent)]="alcoholContent"
+    [(sort)]="sort"
+  ></app-beer-filters>
   <div #scrollable class="scrollable">
-    <app-beer-list [beers]="filteredBeers()" (favouriteChange)="favouriteChange($event);"></app-beer-list>
+    <app-beer-list
+      [beers]="filteredBeers()"
+      (favouriteChange)="favouriteChange($event)"
+    ></app-beer-list>
     @if(isScrolled()) {
     <button
       icon="pi"

@@ -14,6 +14,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
+import { map } from 'rxjs';
+import { BeerSort } from './../../models/beer.model';
 
 @Component({
   selector: 'app-beer-filters',
@@ -32,13 +34,16 @@ import { TooltipModule } from 'primeng/tooltip';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeerFiltersComponent {
-  favourites = model<boolean>();
+  name = model<string>();
+  alcoholContent = model<[number, number]>([0, 100]);
+  showFavourites = model<boolean>();
+  sort = model<BeerSort>();
 
   filtersEl = viewChild.required<ElementRef<HTMLElement>>('filters');
 
-  sortOptions = signal([
-    { label: 'Sort by name', value: 'name' },
-    { label: 'Sort by alcohol', value: 'alcohol' },
+  sortOptions = signal<{ label: string; value: BeerSort }[]>([
+    { label: 'Sort by name', value: BeerSort.Name },
+    { label: 'Sort by alcohol', value: BeerSort.Alcohol },
   ]);
 
   nameFilter = new FormControl('', { nonNullable: true });
@@ -46,10 +51,15 @@ export class BeerFiltersComponent {
     nonNullable: true,
   });
   favouritesFilter = new FormControl(false, { nonNullable: true });
-  sortControl = new FormControl('name', { nonNullable: true });
+  sortControl = new FormControl<BeerSort>(BeerSort.Name, {
+    nonNullable: true,
+  });
 
   constructor(private element: ElementRef) {
-    connect(this.favourites, this.favouritesFilter.valueChanges);
+    connect(this.name, this.nameFilter.valueChanges.pipe(map((v) => v.trim())));
+    connect(this.showFavourites, this.favouritesFilter.valueChanges);
+    connect(this.alcoholContent, this.alcoholFilter.valueChanges);
+    connect(this.sort, this.sortControl.valueChanges);
   }
 
   toggleFilters() {

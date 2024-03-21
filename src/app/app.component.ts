@@ -11,21 +11,19 @@ import {
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { BeerListComponent } from './components/beer-list/beer-list.component';
-import { Beer } from './models/beer.model';
-import { SessionStorageKeys } from './constants/constants';
+import { Beer, BeerSort } from './models/beer.model';
+import { BeerApiQueryParams, SessionStorageKeys } from './constants/constants';
 import { FooterComponent } from './components/footer/footer.component';
-import { firstValueFrom, map } from 'rxjs';
+import { firstValueFrom } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
 import { BeerFiltersComponent } from './components/beer-filters/beer-filters.component';
+import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterOutlet,
     HeaderComponent,
@@ -36,6 +34,9 @@ import { BeerFiltersComponent } from './components/beer-filters/beer-filters.com
     TooltipModule,
     BeerFiltersComponent,
   ],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
   scrollableEl = viewChild.required<ElementRef<HTMLElement>>('scrollable');
@@ -43,13 +44,34 @@ export class AppComponent implements OnInit {
   isScrolled = signal<boolean>(false);
 
   beers = signal<Beer[]>([]);
-  favourites = signal<boolean>(false);
+  name = signal<string>('');
+  alcoholContent = signal<[number, number]>([0, 100]);
+  showFavourites = signal<boolean>(false);
+  sort = signal<BeerSort>(BeerSort.Name);
 
-  filteredBeers = computed<Beer[]>(() =>
-    this.beers().filter((beer) =>
-      !this.favourites() ? true : beer.favourite === this.favourites()
-    )
-  );
+  computeFilters = () => {
+    const beers = this.beers();
+    const name = this.name().toLocaleUpperCase();
+    const [abvMin, abvMax] = this.alcoholContent();
+    const showFavourites = this.showFavourites();
+    const sort = this.sort();
+
+    const filtered = beers.filter(
+      (b) =>
+        b.name.toLocaleUpperCase().includes(name) &&
+        b.abv >= abvMin &&
+        b.abv <= abvMax &&
+        (!showFavourites ? true : b.favourite === showFavourites)
+    );
+
+    return filtered.sort((a, b) => {
+      return sort === BeerSort.Name
+        ? a.name.localeCompare(b.name)
+        : a.abv - b.abv;
+    });
+  };
+
+  filteredBeers = computed<Beer[]>(this.computeFilters);
 
   constructor(private beerService: BeerService) {}
 
@@ -80,7 +102,8 @@ export class AppComponent implements OnInit {
       sessionStorage.getItem(SessionStorageKeys.Favourites) || '[]'
     );
 
-    const beers = await firstValueFrom(this.beerService.getBeers());
+    const params = new HttpParams().set(BeerApiQueryParams.PerPage, 25);
+    const beers = await firstValueFrom(this.beerService.getBeers(params));
 
     if (favourites.length) {
       beers.forEach((beer) => {
