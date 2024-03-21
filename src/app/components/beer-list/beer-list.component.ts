@@ -1,7 +1,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  model,
+  input,
+  output,
   signal,
 } from '@angular/core';
 import { Beer } from '../../models/beer.model';
@@ -28,9 +29,14 @@ import { DropdownModule } from 'primeng/dropdown';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeerListComponent {
-  sortOptions = signal([{label: 'Sort by name', value: 'name'}, {label: 'Sort by alcohol', value: 'alcohol'}]);
+  sortOptions = signal([
+    { label: 'Sort by name', value: 'name' },
+    { label: 'Sort by alcohol', value: 'alcohol' },
+  ]);
 
-  beers = model.required<Beer[]>();
+  beers = input.required<Beer[]>();
+
+  favouriteChange = output<{ id: number; favourite: boolean }>();
 
   nameFilter = new FormControl('');
   alcoholFilter = new FormControl<[number, number]>([0, 100]);
@@ -38,9 +44,6 @@ export class BeerListComponent {
   sortControl = new FormControl('name');
 
   onFavouriteChange(id: number, favourite: boolean) {
-    const beers = this.beers().map((beer) =>
-      beer.id === id ? { ...beer, favourite } : beer
-    );
-    this.beers.set(beers);
+    this.favouriteChange.emit({ id, favourite });
   }
 }

@@ -4,6 +4,7 @@ import {
   Component,
   ElementRef,
   OnInit,
+  computed,
   signal,
   viewChild,
 } from '@angular/core';
@@ -39,16 +40,42 @@ import { BeerFiltersComponent } from './components/beer-filters/beer-filters.com
 export class AppComponent implements OnInit {
   scrollableEl = viewChild.required<ElementRef<HTMLElement>>('scrollable');
 
-  beers = signal<Beer[]>([]);
   isScrolled = signal<boolean>(false);
+
+  beers = signal<Beer[]>([]);
+  favourites = signal<boolean>(false);
+
+  filteredBeers = computed<Beer[]>(() =>
+    this.beers().filter((beer) =>
+      !this.favourites() ? true : beer.favourite === this.favourites()
+    )
+  );
 
   constructor(private beerService: BeerService) {}
 
   async ngOnInit() {
-    this.scrollableEl().nativeElement.addEventListener('scroll', () => {
-      this.isScrolled.set(this.scrollableEl().nativeElement.scrollTop > 0);
+    const scrollable = this.scrollableEl().nativeElement;
+
+    scrollable.addEventListener('scroll', () => {
+      this.isScrolled.set(scrollable.scrollTop > 0);
     });
 
+    await this.getData();
+  }
+
+  scrollToTop() {
+    this.scrollableEl().nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  favouriteChange({ id, favourite }: { id: number; favourite: boolean }) {
+    const beers = this.beers().map((beer) => {
+      return beer.id === id ? { ...beer, favourite } : beer;
+    });
+
+    this.beers.set(beers);
+  }
+
+  private async getData() {
     const favourites = JSON.parse(
       sessionStorage.getItem(SessionStorageKeys.Favourites) || '[]'
     );
@@ -62,9 +89,5 @@ export class AppComponent implements OnInit {
     }
 
     this.beers.set(beers);
-  }
-
-  scrollToTop() {
-    this.scrollableEl().nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

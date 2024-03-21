@@ -2,9 +2,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  model,
   signal,
   viewChild,
 } from '@angular/core';
+import { connect } from 'ngxtension/connect';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { SliderModule } from 'primeng/slider';
@@ -30,6 +32,8 @@ import { TooltipModule } from 'primeng/tooltip';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeerFiltersComponent {
+  favourites = model<boolean>();
+
   filtersEl = viewChild.required<ElementRef<HTMLElement>>('filters');
 
   sortOptions = signal([
@@ -37,12 +41,16 @@ export class BeerFiltersComponent {
     { label: 'Sort by alcohol', value: 'alcohol' },
   ]);
 
-  nameFilter = new FormControl('');
-  alcoholFilter = new FormControl<[number, number]>([0, 100]);
-  favouritesFilter = new FormControl(false);
-  sortControl = new FormControl('name');
+  nameFilter = new FormControl('', { nonNullable: true });
+  alcoholFilter = new FormControl<[number, number]>([0, 100], {
+    nonNullable: true,
+  });
+  favouritesFilter = new FormControl(false, { nonNullable: true });
+  sortControl = new FormControl('name', { nonNullable: true });
 
-  constructor(private element: ElementRef) {}
+  constructor(private element: ElementRef) {
+    connect(this.favourites, this.favouritesFilter.valueChanges);
+  }
 
   toggleFilters() {
     const filtersEl = this.filtersEl().nativeElement;
