@@ -42,6 +42,7 @@ $input-max-width: 250px;
       minmax(max-content, $input-max-width)
     );
     justify-content: center;
+    grid-gap: 2rem 4rem;
     max-height: initial;
     overflow: initial;
     padding-inline: 0;
