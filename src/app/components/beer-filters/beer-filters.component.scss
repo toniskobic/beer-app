@@ -8,9 +8,11 @@ $input-max-width: 250px;
   justify-content: center;
   align-items: flex-start;
   padding-inline: 2rem;
+  transition: box-shadow 0.3s ease-in-out;
 
   @media screen and (min-width: $breakpoint-xs) {
     box-shadow: none;
+    transition: none;
   }
 }
 
@@ -42,10 +44,13 @@ $input-max-width: 250px;
       minmax(max-content, $input-max-width)
     );
     justify-content: center;
-    grid-gap: 2rem 4rem;
     max-height: initial;
     overflow: initial;
     padding-inline: 0;
+  }
+
+  @media screen and (min-width: $breakpoint-sm) {
+    grid-gap: 2rem 4rem;
   }
 
   &-open {
