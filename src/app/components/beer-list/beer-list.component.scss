@@ -7,16 +7,11 @@
 }
 
 .beer-list {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, $card-width));
+  justify-content: center;
+  gap: 40px;
   width: 100%;
   max-width: $breakpoint-lg;
   padding-inline: 2rem;
-
-  @media screen and (min-width: $breakpoint-xs) {
-    flex-flow: row wrap;
-    justify-content: space-between;
-  }
 }

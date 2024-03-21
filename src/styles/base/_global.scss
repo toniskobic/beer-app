@@ -21,6 +21,9 @@
   // Box shadows
   --box-shadow-sm: #{$box-shadow-sm};
   --box-shadow-bottom: #{$box-shadow-bottom};
+
+  // Misc
+  --card-width: #{$card-width};
 }
 
 .box-shadow-bottom {
