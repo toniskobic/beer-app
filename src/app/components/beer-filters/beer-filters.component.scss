@@ -29,7 +29,7 @@ $input-max-width: 250px;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   width: calc(100% - $button-width);
   max-width: $breakpoint-lg;
   max-height: 0;
@@ -43,6 +43,7 @@ $input-max-width: 250px;
       auto-fill,
       minmax(max-content, $input-max-width)
     );
+    grid-gap: 1rem 2rem;
     justify-content: center;
     max-height: initial;
     overflow: initial;
@@ -50,7 +51,7 @@ $input-max-width: 250px;
   }
 
   @media screen and (min-width: $breakpoint-sm) {
-    grid-gap: 2rem 4rem;
+    grid-gap: 1rem 4rem;
   }
 
   &-open {
