@@ -2,7 +2,7 @@
 
 Beer app is an Angular application designed to fetch and display data about beers. It utilizes the Punk API to retrieve information about various beers and presents them in a user-friendly interface.
 
-Production deployed app: [Beer App](#) <!-- Replace with the actual deployment link -->
+Production deployed app: [Beer App](https://beer-app-tskobics-projects.vercel.app/)
 
 ## Installing dependencies
 
