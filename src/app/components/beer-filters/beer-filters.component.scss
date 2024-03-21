@@ -1,5 +1,8 @@
 @import "../../../styles/abstracts/variables";
 
+$button-width: 2.357rem;
+$input-max-width: 250px;
+
 :host {
   display: flex;
   justify-content: center;
@@ -12,6 +15,9 @@
 }
 
 .filters-button {
+  width: $button-width;
+  flex-shrink: 0;
+
   @media screen and (min-width: $breakpoint-xs) {
     display: none;
   }
@@ -21,17 +27,21 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  width: 100%;
-  max-width: $breakpoint-lg;
   gap: 2rem;
+  width: calc(100% - $button-width);
+  max-width: $breakpoint-lg;
   max-height: 0;
+  padding-inline: 0.75rem;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
-  padding-inline: 0.75rem;
 
   @media screen and (min-width: $breakpoint-xs) {
-    flex-flow: row wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max-content, $input-max-width)
+    );
+    justify-content: center;
     max-height: initial;
     overflow: initial;
     padding-inline: 0;
@@ -41,5 +51,9 @@
     max-height: 350px;
     padding-bottom: 1rem;
     overflow: visible;
+  }
+
+  .input {
+    max-width: $input-max-width;
   }
 }
