@@ -1,4 +1,15 @@
-<div class="filters">
+<button
+  icon="pi"
+  pButton
+  pRipple
+  (click)="toggleFilters()"
+  class="filters-button"
+  pTooltip="Show/hide filters"
+  tooltipPosition="right"
+>
+  <img alt="icon" src="../../../assets/svgs/filter.svg" />
+</button>
+<div #filters class="filters">
   <div class="input">
     <label for="name-filter">Filter by name</label>
     <span class="p-input-icon-left">

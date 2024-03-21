@@ -1,6 +1,7 @@
 :root {
   // Colors
   --white: #{$white};
+  --black: #{$black};
   --alice-blue: #{$alice-blue};
   --gray-light: #{$gray-light};
 
@@ -19,4 +20,9 @@
 
   // Box shadows
   --box-shadow-sm: #{$box-shadow-sm};
+  --box-shadow-bottom: #{$box-shadow-bottom};
+}
+
+.box-shadow-bottom {
+  box-shadow: var(--box-shadow-bottom);
 }

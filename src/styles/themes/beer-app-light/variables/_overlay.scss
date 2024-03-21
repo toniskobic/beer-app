@@ -54,6 +54,10 @@ $tooltipBg: $textColor;
 /// @group overlay
 $tooltipTextColor: #ffffff;
 
+/// Font size of a tooltip
+/// @group overlay
+$tooltipFontSize: 0.875rem;
+
 /// Padding of a tooltip
 /// @group overlay
 $tooltipPadding: $inputPadding;

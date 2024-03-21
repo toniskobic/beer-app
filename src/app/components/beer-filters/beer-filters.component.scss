@@ -3,19 +3,42 @@
 :host {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   padding-inline: 2rem;
+
+  @media screen and (min-width: $breakpoint-xs) {
+    box-shadow: none;
+  }
+}
+
+.filters-button {
+  @media screen and (min-width: $breakpoint-xs) {
+    display: none;
+  }
 }
 
 .filters {
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   align-items: center;
   width: 100%;
   max-width: $breakpoint-lg;
   gap: 2rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  padding-inline: 0.75rem;
 
   @media screen and (min-width: $breakpoint-xs) {
     flex-flow: row wrap;
     justify-content: space-between;
+    max-height: initial;
+    overflow: initial;
+    padding-inline: 0;
+  }
+
+  &-open {
+    max-height: 350px;
+    padding-bottom: 1rem;
   }
 }

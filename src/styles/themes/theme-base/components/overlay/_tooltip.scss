@@ -5,6 +5,7 @@
         padding: $tooltipPadding;
         box-shadow: $inputOverlayShadow;
         border-radius: $borderRadius;
+        font-size: $tooltipFontSize;
     }
 
     &.p-tooltip-right {
