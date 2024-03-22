@@ -7,10 +7,11 @@ $input-max-width: 250px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  gap: 1rem;
   padding-inline: 2rem;
   transition: box-shadow 0.3s ease-in-out;
 
-  @media screen and (min-width: $breakpoint-xs) {
+  @media screen and (min-width: $breakpoint-md) {
     box-shadow: none;
     transition: none;
   }
@@ -20,7 +21,7 @@ $input-max-width: 250px;
   width: $button-width;
   flex-shrink: 0;
 
-  @media screen and (min-width: $breakpoint-xs) {
+  @media screen and (min-width: $breakpoint-md) {
     display: none;
   }
 }
@@ -33,25 +34,28 @@ $input-max-width: 250px;
   width: calc(100% - $button-width);
   max-width: $breakpoint-lg;
   max-height: 0;
-  padding-inline: 0.75rem;
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 
   @media screen and (min-width: $breakpoint-xs) {
     display: grid;
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(max-content, $input-max-width)
-    );
+    grid-template-columns: repeat(2, minmax(max-content, $input-max-width));
     grid-gap: 1rem 2rem;
     justify-content: center;
-    max-height: initial;
-    overflow: initial;
-    padding-inline: 0;
   }
 
   @media screen and (min-width: $breakpoint-sm) {
     grid-gap: 1rem 4rem;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(max-content, $input-max-width)
+    );
+    justify-content: center;
+    max-height: initial;
+    overflow: initial;
   }
 
   &-open {

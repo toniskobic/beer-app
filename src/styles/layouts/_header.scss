@@ -5,11 +5,19 @@
   background-image: url("../../assets/svgs/drawing.svg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  height: 150px;
+  height: 100px;
   padding-inline: 2rem;
 
   .logo {
-    width: 275px;
+    width: 200px;
     max-width: 65%;
+  }
+
+  @media screen and (min-width: $breakpoint-md) {
+    height: 150px;
+
+    .logo {
+      width: 275px;
+    }
   }
 }

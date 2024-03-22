@@ -4,5 +4,9 @@
 
   @media screen and (min-width: $breakpoint-xs) {
     width: 50vw;
+
+    @media screen and (orientation: landscape) {
+      height: 90vh;
+    }
   }
 }
