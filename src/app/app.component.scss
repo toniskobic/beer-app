@@ -16,7 +16,14 @@ main {
 }
 
 .scrollable {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: auto;
+}
+
+app-beer-list {
+  flex: 1;
 }
 
 .scroll-top-button {
@@ -24,6 +31,7 @@ main {
   left: 95%;
   bottom: 10px;
   margin: 0 10px 10px 0;
+  flex-shrink: 0;
   background-color: var(--white);
   border-color: var(--gray-light);
   box-shadow: var(--box-shadow-sm);
