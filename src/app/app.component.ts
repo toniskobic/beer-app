@@ -12,14 +12,13 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { BeerListComponent } from './components/beer-list/beer-list.component';
 import { Beer, BeerSort } from './models/beer.model';
-import { BeerApiQueryParams, SessionStorageKeys } from './constants/constants';
+import { SessionStorageKeys } from './constants/constants';
 import { FooterComponent } from './components/footer/footer.component';
 import { firstValueFrom } from 'rxjs';
 import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
 import { BeerFiltersComponent } from './components/beer-filters/beer-filters.component';
-import { HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -102,8 +101,7 @@ export class AppComponent implements OnInit {
       sessionStorage.getItem(SessionStorageKeys.Favourites) || '[]'
     );
 
-    const params = new HttpParams().set(BeerApiQueryParams.PerPage, 25);
-    const beers = await firstValueFrom(this.beerService.getBeers(params));
+    const beers = await firstValueFrom(this.beerService.getBeers());
 
     if (favourites.length) {
       beers.forEach((beer) => {
