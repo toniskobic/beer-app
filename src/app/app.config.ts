@@ -5,6 +5,7 @@ import { routes } from './app.routes';
 import { PrimeNGConfig } from 'primeng/api';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { IMAGE_CONFIG } from '@angular/common';
 
 const initializeAppFactory = (primeConfig: PrimeNGConfig) => () => {
   primeConfig.ripple = true;
@@ -20,6 +21,13 @@ export const appConfig: ApplicationConfig = {
       useFactory: initializeAppFactory,
       deps: [PrimeNGConfig],
       multi: true,
+    },
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        disableImageSizeWarning: true,
+        disableImageLazyLoadWarning: true
+      }
     },
   ],
 };

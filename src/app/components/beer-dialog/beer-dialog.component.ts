@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Beer } from '../../models/beer.model';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
+import { BeerService } from '../../services/beer.service';
 
 @Component({
   selector: 'app-beer-dialog',
@@ -12,9 +13,13 @@ import { DynamicDialogConfig } from 'primeng/dynamicdialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeerDialogComponent {
-  beer = signal<Beer | undefined>(undefined);
+  private _config = inject(DynamicDialogConfig);
+  private _beerService = inject(BeerService);
 
-  constructor(public config: DynamicDialogConfig) {
-    this.beer.set(this.config.data.beer as Beer);
+  beer = signal<Beer | undefined>(undefined);
+  imagesAvailable = this._beerService.imagesAvailable;
+
+  constructor() {
+    this.beer.set(this._config.data.beer as Beer);
   }
 }

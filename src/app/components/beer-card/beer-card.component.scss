@@ -15,8 +15,18 @@ $alice-blue: var(--alice-blue);
   border-radius: 3px;
 }
 
+.beer-name {
+  display: flex;
+  align-items: center;
+  height: 20%;
+  margin: 0;
+  text-align: center;
+  font-weight: 600;
+}
+
 .beer-image {
   object-fit: contain;
+  height: 60%;
   min-height: 0;
 }
 
@@ -28,4 +38,8 @@ $alice-blue: var(--alice-blue);
   img {
     pointer-events: none;
   }
+}
+
+.details-button {
+  height: 20%;
 }

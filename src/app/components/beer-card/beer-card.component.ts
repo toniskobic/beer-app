@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  inject,
   input,
   output,
 } from '@angular/core';
@@ -11,6 +12,7 @@ import { RippleModule } from 'primeng/ripple';
 import { SessionStorageKeys } from '../../constants/constants';
 import { DialogService } from 'primeng/dynamicdialog';
 import { BeerDialogComponent } from '../beer-dialog/beer-dialog.component';
+import { BeerService } from '../../services/beer.service';
 
 @Component({
   selector: 'app-beer-card',
@@ -22,14 +24,19 @@ import { BeerDialogComponent } from '../beer-dialog/beer-dialog.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeerCardComponent {
+  private _dialogService = inject(DialogService);
+  private _beerService = inject(BeerService);
+
   beer = input.required<Beer>();
 
   favouriteChange = output<boolean>();
 
-  constructor(public dialogService: DialogService) {}
+  imagesAvailable = this._beerService.imagesAvailable;
+
+  constructor() { }
 
   showDetails() {
-    this.dialogService.open(BeerDialogComponent, {
+    this._dialogService.open(BeerDialogComponent, {
       modal: true,
       styleClass: 'dialog',
       header: this.beer().name,
