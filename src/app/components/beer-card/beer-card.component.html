@@ -8,8 +8,7 @@
     }
   </button>
   <h3 class="beer-name">{{ beer().name }}</h3>
-  <img class="beer-image" [src]="imagesAvailable() ? beer().image_url : '../../../assets/images/logo-short.png'"
-    alt="beer logo" />
+  <img class="beer-image" [src]="beer().image_url" alt="beer logo" />
   <p-button class="details-button" severity="secondary" [outlined]="true" (onClick)="showDetails()">
     <div class="button-content">
       <img alt="button icon" src="../../../assets/svgs/info-24px.svg" />

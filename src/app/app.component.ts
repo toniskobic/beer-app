@@ -19,8 +19,6 @@ import { ButtonModule } from 'primeng/button';
 import { TooltipModule } from 'primeng/tooltip';
 import { RippleModule } from 'primeng/ripple';
 import { BeerFiltersComponent } from './components/beer-filters/beer-filters.component';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -74,7 +72,7 @@ export class AppComponent implements OnInit {
 
   filteredBeers = computed<Beer[]>(this.computeFilters);
 
-  constructor(private beerService: BeerService, private http: HttpClient) {
+  constructor(private beerService: BeerService) {
   }
 
   async ngOnInit() {
@@ -84,11 +82,6 @@ export class AppComponent implements OnInit {
       this.isScrolled.set(scrollable.scrollTop > 0);
     });
 
-    try {
-      await firstValueFrom(this.http.get(environment.imagesApi));
-    } catch {
-      this.beerService.imagesAvailable.set(false);
-    }
     await this.getData();
   }
 

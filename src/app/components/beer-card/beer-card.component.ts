@@ -12,7 +12,6 @@ import { RippleModule } from 'primeng/ripple';
 import { SessionStorageKeys } from '../../constants/constants';
 import { DialogService } from 'primeng/dynamicdialog';
 import { BeerDialogComponent } from '../beer-dialog/beer-dialog.component';
-import { BeerService } from '../../services/beer.service';
 
 @Component({
   selector: 'app-beer-card',
@@ -25,13 +24,10 @@ import { BeerService } from '../../services/beer.service';
 })
 export class BeerCardComponent {
   private _dialogService = inject(DialogService);
-  private _beerService = inject(BeerService);
 
   beer = input.required<Beer>();
 
   favouriteChange = output<boolean>();
-
-  imagesAvailable = this._beerService.imagesAvailable;
 
   constructor() { }
 

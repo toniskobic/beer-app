@@ -1,12 +1,5 @@
-<button
-  icon="pi"
-  pButton
-  pRipple
-  (click)="toggleFilters()"
-  class="filters-button"
-  pTooltip="Show/hide filters"
-  tooltipPosition="right"
->
+<button icon="pi" pButton pRipple (click)="toggleFilters()" class="filters-button" pTooltip="Show/hide filters"
+  tooltipPosition="right">
   <img alt="icon" src="../../../assets/svgs/filter.svg" />
 </button>
 <div #filters class="filters">
@@ -14,38 +7,20 @@
     <label for="name-filter">Filter by name</label>
     <span class="p-input-icon-left">
       <i class="pi pi-search"></i>
-      <input
-        id="name-filter"
-        type="text"
-        pInputText
-        [formControl]="nameFilter"
-      />
+      <input id="name-filter" type="text" pInputText [formControl]="nameFilter" />
     </span>
   </div>
   <div class="input">
-    <label id="alcohol-filter">Alcohol content (%)</label>
-    <p-slider
-      ariaLabelledBy="alcohol-filter"
-      [formControl]="alcoholFilter"
-      [range]="true"
-      [min]="0"
-      [max]="100"
-    ></p-slider>
+    <label id="alcohol-filter">Alcohol content: {{ alcoholContent()[0] + '% - ' + alcoholContent()[1] + '%'}}</label>
+    <p-slider ariaLabelledBy="alcohol-filter" [formControl]="alcoholFilter" [range]="true" [min]="0"
+      [max]="100"></p-slider>
   </div>
   <div class="input">
     <label for="favourites-filter">Show only favourites</label>
-    <p-checkbox
-      inputId="favourites-filter"
-      [formControl]="favouritesFilter"
-      [binary]="true"
-    ></p-checkbox>
+    <p-checkbox inputId="favourites-filter" [formControl]="favouritesFilter" [binary]="true"></p-checkbox>
   </div>
   <div class="input">
     <label id="sort-select">Sort</label>
-    <p-dropdown
-      ariaLabelledBy="name"
-      [formControl]="sortControl"
-      [options]="sortOptions()"
-    ></p-dropdown>
+    <p-dropdown ariaLabelledBy="name" [formControl]="sortControl" [options]="sortOptions()"></p-dropdown>
   </div>
 </div>
